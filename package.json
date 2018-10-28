@@ -41,7 +41,6 @@
     "@types/errorhandler": "^0.0.32",
     "@types/app-root-path": "^1.2.4",
     "concurrently": "^3.5.1",
-    "nodemon": "^1.13.0",
     "ts-node": "^5.0.0",
     "tslint": "^5.9.1"
   }
