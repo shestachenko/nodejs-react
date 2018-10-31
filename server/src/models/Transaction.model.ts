@@ -1,7 +1,7 @@
 export type TransactionModel = {
   id?: number,
   userId: number,
-  userName: string,
+  userFullName: string,
   type: string,
   description: string,
   amount: number,

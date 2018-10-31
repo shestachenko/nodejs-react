@@ -22,19 +22,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 app.use(session({
     secret: 'keyboard cat',
-    cookie: { maxAge: 60000 }
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, expires: false}
 }));
 
+
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Authorization, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+});
 
 app.use((req, res, next) => {
     if (!req.session.user) {
         const user: UserModel = {
             id: 30,
-            name: 'Khabib',
+            first_name: 'Khabib',
+            email: 'khabib@nurmagomedov.com',
             balance: 100,
         };
-        console.log('<-----session is lost');
         req.session.user = user;
     }
 

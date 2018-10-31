@@ -1,7 +1,7 @@
 export type UserModel = {
   id: number,
-  name: string,
+  first_name: string,
+  last_name?: string,
+  email: string,
   balance: number,
-  gender?: string,
-  email?: string,
 };

@@ -5,8 +5,8 @@ export const getCurrentUser = (req: Request, res: Response) => {
 };
 
 export const updateCurrentUser = (req: Request, res: Response) => {
-    req.assert('name', 'Name is invalid').isLength({min: 1});
-    req.assert('gender', 'Gender is invalid').isIn(['male', 'female']);
+    req.assert('first_name', 'First Name is invalid').isLength({min: 1});
+    req.assert('last_name', 'Last Name is invalid').isLength({min: 1});
     req.assert('email', 'Email is invalid').isEmail();
     req.assert('balance', 'Balance invalid').isInt();
 

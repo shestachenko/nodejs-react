@@ -11,7 +11,7 @@ export const createTransaction = (user: UserModel, type: string, payment: Paymen
         }
         const transaction: TransactionModel = {
             userId: user.id,
-            userName: user.name,
+            userFullName: `${user.first_name} ${user.last_name}`.trim(),
             type,
             amount: payment.amount,
             description: `Payment type - ${type}`,
