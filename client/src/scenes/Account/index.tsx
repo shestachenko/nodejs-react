@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AccountForm from './components/AccountForm';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import {fetchUserAccount, updateUserAccount} from './actions'
 import './style.css';
 

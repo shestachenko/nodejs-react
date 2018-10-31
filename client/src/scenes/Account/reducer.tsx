@@ -1,4 +1,4 @@
-import { AccountActionTypes } from "./actions";
+import { AccountActionTypes } from './actions';
 
 export interface State {
   data: AccountInterface;

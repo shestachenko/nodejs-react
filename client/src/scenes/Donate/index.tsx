@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import {makeDonate} from './actions'
-import DonateForm from "./components/DonateForm";
+import DonateForm from './components/DonateForm';
 import './style.css';
 
 class Donate extends React.Component<any> {

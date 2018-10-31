@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {push} from "react-router-redux";
+import {push} from 'react-router-redux';
 
 export enum DonateActionTypes {
   MakeDonate = '[Donate] Make Donate',
