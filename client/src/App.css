@@ -23,13 +23,8 @@
 }
 
 main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-article {
-  width: 800px;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 @keyframes App-logo-spin {

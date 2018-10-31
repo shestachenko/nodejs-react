@@ -1,12 +1,12 @@
 import express from 'express';
+import session from 'express-session';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import path from 'path';
 import expressValidator from 'express-validator';
-import session from 'express-session';
 import userRoutes from './routes/user.routes';
 import transactionRouter from './routes/transaction.routes';
-import { UserModel } from './models/User.model';
+
 
 // Load environment variables from .env file, where API keys and passwords are configured
 dotenv.config({ path: '.env.example' });
@@ -18,10 +18,11 @@ const app = express();
 app.set('port', process.env.PORT || 3000);
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
+
 app.use(session({
-    secret: 'keyboard cat',
+    secret: 'keyboard-cat',
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false, expires: false}
@@ -39,16 +40,7 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-    if (!req.session.user) {
-        const user: UserModel = {
-            id: 30,
-            first_name: 'Khabib',
-            email: 'khabib@nurmagomedov.com',
-            balance: 100,
-        };
-        req.session.user = user;
-    }
-
+    req.session.user = {id: 21};
     next();
 });
 

@@ -1,0 +1,31 @@
+.item {
+  width: 37.5%;
+}
+
+.item.date {
+  width: 33%;
+  margin: 10px 30px;
+}
+
+.item.cvv {
+  width: 76%;
+  margin: 10px 0;
+}
+
+.item.amount {
+  width: 38%;
+  margin: 10px 38px;
+}
+
+.form-actions {
+  margin: 20px 0;
+}
+.row-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.row-actions button {
+  margin: 0 10px;
+}

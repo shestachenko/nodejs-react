@@ -1,7 +1,8 @@
 export type PaymentModel = {
     card_number: number,
-    expired_month: number,
-    expired_year: number,
-    cvc: number,
+    holder_name: string,
+    expire_month: number,
+    expire_year: number,
+    cvv: number,
     amount: number
 };

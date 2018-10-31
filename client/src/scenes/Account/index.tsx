@@ -1,8 +1,8 @@
 import * as React from 'react';
 import AccountForm from './components/AccountForm';
-import {Values} from 'redux-form-website-template';
 import {connect} from "react-redux";
 import {fetchUserAccount, updateUserAccount} from './actions'
+import './style.css';
 
 class Account extends React.Component<any> {
   public componentDidMount() {
@@ -11,10 +11,9 @@ class Account extends React.Component<any> {
 
   public render() {
     return (
-      <div>
+      <div className={'page-account'}>
         <h2>User Account</h2>
         <AccountForm onSubmit={this.props.updateUserAccount} initialValues={this.props.user}/>
-        <Values form="MaterialUiForm"/>
       </div>
     );
   }

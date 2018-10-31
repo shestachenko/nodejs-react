@@ -19,8 +19,11 @@
     "watch-ts": "tsc -w"
   },
   "dependencies": {
+    "@types/cookie-session": "^2.0.36",
     "app-root-path": "^2.1.0",
     "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "errorhandler": "^1.5.0",
@@ -42,6 +45,7 @@
     "@types/winston": "^2.3.7",
     "@types/errorhandler": "^0.0.32",
     "@types/app-root-path": "^1.2.4",
+    "@types/cookie-parser": "^1.4.1",
     "concurrently": "^3.5.1",
     "ts-node": "^5.0.0",
     "tslint": "^5.9.1"

@@ -2,44 +2,33 @@ import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import asyncValidate from './asyncValidate';
 import validate from './validate';
-import TextField from "@material-ui/core/TextField";
-import './style.css';
+import '../../style.css';
+import FormTextField from "../../../../components/dumb/formElements/FormTextField";
 
-const renderTextField = (
-  { input, label, meta: { touched, error }, ...custom }: any,
-) => (
-  <TextField
-    label={label}
-    placeholder={label}
-    error={!!(touched && error)}
-    {...input}
-    {...custom} />
-);
-
-const MaterialUiForm = (props: any) => {
+const AccountForm = (props: any) => {
   const { handleSubmit, pristine, reset, submitting } = props;
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
-        <div className={'row'}>
+        <div className={'row around-xs'}>
           <Field className={'item'}
             name="first_name"
             label="First Name"
-            component={renderTextField} />
+            component={FormTextField} />
           <Field className={'item'}
             name="last_name"
             label="Last name"
-            component={renderTextField} />
+            component={FormTextField} />
         </div>
-        <div className={'row'}>
+        <div className={'row around-xs'}>
           <Field className={'item'}
                  name="email"
                  label="Email"
-                 component={renderTextField} />
+                 component={FormTextField} />
           <Field className={'item'}
                  name="balance"
                  label="Farm balance"
-                 component={renderTextField} />
+                 component={FormTextField} />
         </div>
         <div className='row-actions'>
           <button type="submit" disabled={pristine || submitting}>Submit</button>
@@ -51,7 +40,7 @@ const MaterialUiForm = (props: any) => {
 };
 
 export default reduxForm({
-  form: 'MaterialUiForm',
+  form: 'AccountForm',
   validate,
   asyncValidate,
-})(MaterialUiForm);
+})(AccountForm);

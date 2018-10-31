@@ -1,9 +1,9 @@
-export type TransactionModel = {
+declare interface TransactionInterface {
   id?: number,
   userId: number,
   userFullName: string,
-  cardHolderName: string,
+  cardHolderName?: string,
   type: string,
   amount: number,
   status: string,
-};
+}
