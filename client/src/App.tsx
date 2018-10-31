@@ -6,6 +6,7 @@ import logo from './logo.svg';
 import Account from './scenes/Account';
 import Transactions from './scenes/Transactions';
 import Donate from './scenes/Donate';
+import Navigation from "./components/dumb/Navigation";
 
 class App extends React.Component {
   public render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo"/>
           <h1 className="App-title">Transaction Project</h1>
         </header>
+        <Navigation />
         <main>
             <Switch>
               <Route exact path='/' component={Account} />

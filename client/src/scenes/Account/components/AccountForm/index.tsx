@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import asyncValidate from './asyncValidate';
 import validate from './validate';
-import '../../style.css';
 import FormTextField from "../../../../components/dumb/formElements/FormTextField";
+import './style.css';
 
 const AccountForm = (props: any) => {
   const { handleSubmit, pristine, reset, submitting } = props;

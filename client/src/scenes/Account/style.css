@@ -1,12 +1,3 @@
-.form-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.example-container > * {
-  width: 80%;
-}
-
 .page-account {
   margin: 0 auto;
   max-width: 600px;
