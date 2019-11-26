@@ -6,7 +6,7 @@ import { UserModel } from '../models/User.model';
 export const getCurrentUser = (req: Request, res: Response) => {
     storageService.getUserById(req.session.user.id)
         .then((user: UserModel) => res.status(200).json(user))
-        .catch((error: Error) => res.status(422).json({error}));
+        .catch((error: Error) => res.status(400).json({error}));
 };
 
 export const updateCurrentUser = (req: Request, res: Response) => {
@@ -16,9 +16,9 @@ export const updateCurrentUser = (req: Request, res: Response) => {
         return res.status(422).json({errors});
     }
 
-    storageService.updateUser(req.body);
-
-    return res.status(200).json(req.session.user);
+    storageService.updateUser(req.body).then((user: UserModel) => {
+        res.status(200).json(req.session.user);
+    }).catch((error: Error) => res.status(400).json({error}));
 };
 
 export const validate = (req: Request, res: Response) => {

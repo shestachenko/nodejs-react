@@ -17,10 +17,15 @@ export const addOne = (req: Request, res: Response) => {
         return res.status(422).json({errors});
     }
 
-    storageService.getUserById(req.session.user.id)
-        .then((user: UserModel) => transactionService.createTransaction(user, 'donate', req.body))
-        .then((transaction: TransactionModel) => res.status(201).json(transaction))
-        .catch((error: Error) => res.status(422).json({error}));
+    const user: Promise<UserModel> = storageService.getUserById(req.session.user.id);
+
+    const transaction: Promise<TransactionModel> = user.then((user: UserModel) =>
+        transactionService.createTransaction(user, 'donate', req.body));
+
+    Promise.all([user, transaction]).then(([user, transaction]: [UserModel, TransactionModel]) => {
+        storageService.updateUser({...user, ...{balance: user.balance - transaction.amount}});
+        res.status(201).json(transaction);
+    }).catch((error: Error) => res.status(422).json({error}));
 };
 
 export const validate = (req: Request, res: Response) => {
