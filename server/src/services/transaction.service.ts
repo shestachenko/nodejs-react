@@ -6,20 +6,24 @@ import { PaymentModel } from '../models/Payment.model';
 import { Dictionary, MappedError } from 'express-validator/shared-typings';
 
 export const createTransaction = (user: UserModel, type: string, payment: PaymentModel): Promise<TransactionModel> => {
-    /*Here is a Promise because validations of transaction probably be async*/
+
+    return bankValidateTransaction(user, payment).then(() => {
+        const transaction: TransactionModel = {
+            userId: user.id,
+            userFullName: `${user.first_name} ${user.last_name || ''}`.trim(),
+            cardHolderName: payment.holder_name,
+            type,
+            amount: payment.amount,
+            status: 'payed',
+        };
+        return storageService.addTransaction(transaction);
+    });
+};
+
+export const bankValidateTransaction = (user: UserModel, payment: PaymentModel): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         if (payment.amount <= user.balance) {
-            const transaction: TransactionModel = {
-                userId: user.id,
-                userFullName: `${user.first_name} ${user.last_name || ''}`.trim(),
-                cardHolderName: payment.holder_name,
-                type,
-                amount: payment.amount,
-                status: 'payed',
-            };
-
-            storageService.updateUser({...user, ...{balance: user.balance - payment.amount}});
-            resolve(storageService.addTransaction(transaction));
+            resolve(true);
         } else {
             reject('Not enough money');
         }
